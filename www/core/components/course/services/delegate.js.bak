@@ -94,11 +94,11 @@ angular.module('mm.core.course')
          * @param {Number} sectionid The section ID.
          * @return {Object}
          */
-        self.getContentHandlerControllerFor = function(handles, module, courseid, sectionid,modules) {
+        self.getContentHandlerControllerFor = function(handles, module, courseid, sectionid) {
             if (typeof enabledHandlers[handles] !== 'undefined') {
-                return enabledHandlers[handles].getController(module, courseid, sectionid,modules);
+                return enabledHandlers[handles].getController(module, courseid, sectionid);
             }
-            return $mmCourseContentHandler.getController(module, courseid, sectionid,modules);
+            return $mmCourseContentHandler.getController(module, courseid, sectionid);
         };
 
         /**

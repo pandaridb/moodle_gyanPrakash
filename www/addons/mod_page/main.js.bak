@@ -21,12 +21,10 @@ angular.module('mm.addons.mod_page', ['mm.core'])
     $stateProvider
 
     .state('site.mod_page', {
-      url: "/mod_page/{moduleId}",
+      url: '/mod_page',
       params: {
-          module: null,
-          moduleId:null,
-        courseid: null,
-        modules: null
+        module: null,
+        courseid: null
       },
       views: {
         'site': {

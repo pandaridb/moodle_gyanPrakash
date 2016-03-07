@@ -22,12 +22,11 @@ angular.module('mm.addons.mod_page')
  * @name mmaModPageIndexCtrl
  */
 .controller('mmaModPageIndexCtrl', function($scope, $stateParams, $mmUtil, $mmaModPage, $mmCourse, $q, $log, $mmApp,
-            mmaModPageComponent, $state) {
+            mmaModPageComponent) {
     $log = $log.getInstance('mmaModPageIndexCtrl');
 
     var module = $stateParams.module || {},
-        courseid = $stateParams.courseid,
-        modules = $stateParams.modules || [];
+        courseid = $stateParams.courseid;
 
     $scope.title = module.name;
     $scope.description = module.description;
@@ -65,32 +64,6 @@ angular.module('mm.addons.mod_page')
         }).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
         });
-    };
-
-    $scope.showPreviousPage = function () {
-        var moduleIndex = 0, moduleId = module.id;
-        for (var i = 0, len = modules.length; i < len; i++) {
-            if (modules[i].id == moduleId) {
-                moduleIndex = i;
-            }
-        }
-        if (moduleIndex > 0) {
-            //module = modules[moduleIndex -1];
-            $state.go('site.mod_page', { module: modules[moduleIndex - 1], moduleId: modules[moduleIndex - 1].id, courseid: courseid, modules: modules });
-        }
-    };
-
-    $scope.showNextPage = function () {
-        var moduleIndex = 0, moduleId = module.id;
-        for (var i = 0, len = modules.length; i < len; i++) {
-            if (modules[i].id == moduleId) {
-                moduleIndex = i;
-            }
-        }
-        if (moduleIndex < modules.length -1) {
-            //module = modules[moduleIndex + 1];
-            $state.go('site.mod_page', { module: modules[moduleIndex + 1], moduleId: modules[moduleIndex + 1].id, courseid: courseid, modules: modules });
-        }
     };
 
     fetchContent().then(function() {

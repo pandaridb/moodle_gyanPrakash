@@ -87,7 +87,7 @@ angular.module('mm.core.course')
 
                         angular.forEach(section.modules, function(module) {
                             module._controller =
-                                    $mmCourseDelegate.getContentHandlerControllerFor(module.modname, module, courseid, section.id,section.modules);
+                                    $mmCourseDelegate.getContentHandlerControllerFor(module.modname, module, courseId, section.id);
                             // Check if activity has completions and if it's marked.
                             var status = statuses[module.id];
                             if (typeof status != 'undefined') {
